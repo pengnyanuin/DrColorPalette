@@ -16,4 +16,5 @@ Have you ever wanted to keep track of the colors you used throughout the whole p
 * CTRL + click will create a new comp sized solid with that color
 * Right click on any color to copy a hexcode to your clipboard
 * Buttons to Save, Save As or Load the palette as JSON file. After AE restart you will need to load your file, the palette DOES NOT SAVE WITH THE PROJECT!
+* CTRL + click on the Load button to load a JSON file with the same name and location as current project file
 * Button to generate a 1000x100 PNG file from your color palette 
