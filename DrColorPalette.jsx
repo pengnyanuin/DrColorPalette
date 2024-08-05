@@ -127,7 +127,21 @@
         loadButton.size=[30,30];
         loadButton.alignment = ["left", "top"];
         loadButton.onClick = function() {
-            var path = File.openDialog("Open color settings", "JSON:*.json");
+            // Detect CTRL + click to attempt to load JSON file from the current project location
+            var keyboardState = ScriptUI.environment.keyboardState;
+            var path = null;
+            if (keyboardState.ctrlKey && app.project.file !== null) {
+                var projectFilePath = app.project.file.absoluteURI;
+                var fileName = projectFilePath.match(/[ \w-]+\.aep/g);
+                if (fileName instanceof Array) {
+                    fileName = fileName[0];
+                    path = projectFilePath.replace(fileName, fileName.replace("aep", "json"));
+                }
+            } 
+            
+            if (path === null) {
+                var path = File.openDialog("Open color settings", "JSON:*.json");
+            }
             
             if (path === null) {
                 // Action aborted
